@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, re_path, include
+from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/v1/', include('api_v1.urls')),
+    re_path(r'test-endpoint/?', Test.as_view(), name="test"),
 ]

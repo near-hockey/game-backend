@@ -26,4 +26,5 @@ static/css/
 
 media/*
 !*/.gitkeep
+static/
 
