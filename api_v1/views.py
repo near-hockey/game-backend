@@ -24,7 +24,7 @@ class MarketplaceDataViewSet(ModelViewSet):
     queryset = MarketplaceData.objects.filter(active=True)
     serializer_class = MarketplaceDataSerializer
     lookup_field = 'nft_token'
-    # permission_classes = [AllowAny]
+    permission_classes = [AllowAny]
 
     def get_permissions(self):
         if not self.request.data:
