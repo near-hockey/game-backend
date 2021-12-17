@@ -19,12 +19,15 @@ class ViewFunctionError(Exception):
 
 class Account(object):
 
-    def __init__(self, provider, signer, account_id):
+    def __init__(self, provider, signer=None, account_id=None):
         self._provider = provider
-        self._signer = signer
-        self._account_id = account_id
-        self._account = provider.get_account(account_id)
-        # self._access_key = provider.get_access_key(account_id, signer._key_pair.encoded_public_key())
+        if signer is not None:
+            self._signer = signer
+        if account_id is not None:
+            self._account_id = account_id
+            self._account = provider.get_account(account_id)
+        if signer is not None:
+            self._access_key = provider.get_access_key(account_id, signer._key_pair.encoded_public_key())
         # print(account_id, self._account, self._access_key)
 
     def _sign_and_submit_tx(self, receiver_id, actions):

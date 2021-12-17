@@ -30,7 +30,7 @@ class MarketplaceDataViewSet(ModelViewSet):
         if not self.request.data:
             permission_classes = [AllowAny]
         elif self.action == 'create' or self.action == 'delete':
-            permission_classes = [HasNFT]
+            permission_classes = [HasNFT, AllowAny]
         else:
             permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
